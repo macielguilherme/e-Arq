@@ -221,15 +221,23 @@ html, body {
    ================================================================ */
 
 .side-nav-sticky {
-    height: calc(100vh - 4rem);
-    top: 4rem;
+    min-height: 100vh;      /* Altura mínima = tela inteira */
+    height: auto;            /* Altura automática */
     position: sticky;
+    top: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-/* ================================================================
-   MENU MOBILE (drawer deslizante)
-   ================================================================ */
+/* No desktop, garante que a sidebar vá até o final */
+@media (min-width: 768px) {
+    .side-nav-sticky {
+        min-height: 100vh;
+    }
+}
 
+/* No mobile, mantém o comportamento de drawer */
 @media (max-width: 767px) {
     .side-nav-sticky {
         position: fixed;
